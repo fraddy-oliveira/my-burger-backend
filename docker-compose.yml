@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  my-burger-backend:
+    build:
+      context: .
+      target: builder
+    command: "npx nodemon ./bin/www"
+    image: my-burger-backend
+    container_name: my-burger-backend
+    working_dir: /usr/src/app
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./.env
+    volumes:
+      - ./bin:/usr/src/app/bin/
+      - ./routes:/usr/src/app/routes/
+      - ./middleware:/usr/src/app/middleware/
+      - ./app.js:/usr/src/app/app.js

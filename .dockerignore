@@ -1,0 +1,8 @@
+# Application
+.git/
+/build/
+/specs/
+.env
+
+# Package manager
+/node_modules/
