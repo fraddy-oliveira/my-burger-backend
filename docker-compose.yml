@@ -4,12 +4,13 @@ services:
     build:
       context: .
       target: builder
-    command: "npx nodemon ./bin/www"
+    command: "npx netlify dev"
     image: my-burger-backend
     container_name: my-burger-backend
     working_dir: /usr/src/app
     ports:
       - "5001:5001"
+      - "8888:8888"
     env_file:
       - ./.env
     volumes:
