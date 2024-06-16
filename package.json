@@ -2,6 +2,7 @@
   "name": "my-burger-backend",
   "version": "1.0.0",
   "private": true,
+  "main": "functions/app.js",
   "scripts": {
     "start": "node ./bin/www"
   },

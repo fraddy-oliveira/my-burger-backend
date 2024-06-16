@@ -1,3 +1,13 @@
+[build]
+  base = "/"
+
+  publish = "/"
+
+  functions = "functions"
+
+[context.production]
+  environment = { NODE_VERSION = "20.12.2" }
+
 [functions]
   external_node_modules = ["express"]
   node_bundler = "esbuild"
@@ -6,4 +16,4 @@
   force = true
   from = "/*"
   status = 200
-  to = "/.netlify/functions/:splat"
+  to = "/.netlify/functions/app/:splat"
