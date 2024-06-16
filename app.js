@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   const error = {
-    message: err.message,
+    message: err.message || "Oops! some error occurred.",
   };
 
   res.status(err.status || 500);
