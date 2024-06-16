@@ -24,6 +24,16 @@ router.get("/", authMiddleware, async function (req, res) {
       data: orders,
     });
   } catch (err) {
+    if (err.response.status === 401) {
+      res.status(err.response.status);
+
+      return res.json({
+        error: {
+          message: "Auth token is invalid.",
+        },
+      });
+    }
+
     res.status(500);
 
     return res.json({
@@ -68,7 +78,15 @@ router.post(
 
       return res.json({ data });
     } catch (err) {
-      console.log(err);
+      if (err.response.status === 401) {
+        res.status(err.response.status);
+
+        return res.json({
+          error: {
+            message: "Auth token is invalid.",
+          },
+        });
+      }
 
       res.status(500);
 

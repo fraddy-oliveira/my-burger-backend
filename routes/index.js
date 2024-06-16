@@ -24,19 +24,23 @@ router.post("/signin", async function (req, res) {
   } catch (err) {
     const error = err?.response?.data?.error;
 
-    if (!error) {
-      res.status(500);
+    if (error.code === 400) {
+      res.status(error.code);
 
       return res.json({
         error: {
-          message: "Oops! some error occurred.",
+          message: "Invalid login credentials.",
         },
       });
     }
 
-    res.status(error.code);
+    res.status(500);
 
-    return res.json({ error });
+    return res.json({
+      error: {
+        message: "Oops! some error occurred.",
+      },
+    });
   }
 });
 
@@ -58,19 +62,33 @@ router.post("/signup", async function (req, res) {
   } catch (err) {
     const error = err?.response?.data?.error;
 
-    if (!error) {
-      res.status(500);
+    if (error.code === 400) {
+      if (error.message === "EMAIL_EXISTS") {
+        res.status(error.code);
+
+        return res.json({
+          error: {
+            message: "Email already exists.",
+          },
+        });
+      }
+
+      res.status(error.code);
 
       return res.json({
         error: {
-          message: "Oops! some error occurred.",
+          message: "Error during sign up.",
         },
       });
     }
 
-    res.status(error.code);
+    res.status(500);
 
-    return res.json({ error });
+    return res.json({
+      error: {
+        message: "Oops! some error occurred.",
+      },
+    });
   }
 });
 
