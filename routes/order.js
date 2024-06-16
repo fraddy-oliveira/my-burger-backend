@@ -1,6 +1,5 @@
 var express = require("express");
 var axios = require("axios");
-var jwt = require("jwt-decode");
 var validateCreateOrderMiddleware = require("../middleware/validate-create-order.middleware");
 var authMiddleware = require("../middleware/auth.middleware");
 
