@@ -9,3 +9,6 @@
 .env
 
 /specs
+
+# Local Netlify folder
+.netlify
