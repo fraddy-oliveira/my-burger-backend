@@ -47,16 +47,6 @@ const validateCreateOrderMiddleware = async (req, res, next) => {
     });
   }
 
-  if (req.body?.price && typeof req.body?.price !== "number") {
-    res.status(400);
-
-    return res.json({
-      error: {
-        message: `Price field (price) should be number.`,
-      },
-    });
-  }
-
   next();
 };
 
