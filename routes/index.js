@@ -58,7 +58,7 @@ router.post("/signup", async function (req, res) {
 
     const { idToken, localId, expiresIn } = response.data;
 
-    return res.json({ idToken, localId, expiresIn });
+    return res.json({ data: { idToken, localId, expiresIn } });
   } catch (err) {
     const error = err?.response?.data?.error;
 
@@ -99,7 +99,7 @@ router.get("/ingredients", async function (req, res) {
     );
 
     if (data) {
-      return res.json({ data });
+      return res.json({ ...data });
     }
 
     res.status(404);

@@ -20,9 +20,7 @@ router.get("/", authMiddleware, async function (req, res) {
       }))
       .filter((o) => o.user_id === req.user.user_id);
 
-    return res.json({
-      data: orders,
-    });
+    return res.json([...orders]);
   } catch (err) {
     if (err.response.status === 401) {
       res.status(err.response.status);
@@ -76,7 +74,7 @@ router.post(
         }
       );
 
-      return res.json({ data });
+      return res.json({ ...data });
     } catch (err) {
       if (err.response.status === 401) {
         res.status(err.response.status);
