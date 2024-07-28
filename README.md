@@ -1,3 +1,5 @@
+# Note: This repository is archived because all API endpoints are moved to [Burger App](https://github.com/fraddy-oliveira/my-burger). Now `Burge App` will host frontend and backend API.
+
 # My Burger Backend
 
 This project serves as a backend for [my-burger](https://github.com/fraddy-oliveira/my-burger) app. It provides APIs for my-burger app to fetch resources from realtime database on firebase.
